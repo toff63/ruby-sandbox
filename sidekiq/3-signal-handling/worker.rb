@@ -13,6 +13,10 @@ class OurWorker
       sleep 10
       puts "Bear with me"
     else
+      while true do
+        sleep 1
+        puts "Endless loop"
+      end
       sleep 1
       puts "Easy peazy"
     end
