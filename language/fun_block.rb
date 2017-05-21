@@ -52,7 +52,30 @@ puts
 end
 
 # reduce
-puts [1, 2, 3, 4, 5].inject(0){|sum, element| sum+element}
+puts [1, 2, 3, 4, 5].inject(0){|sum2, element| sum2+element}
 # same as (init value is the first element of the array :s)
 puts [1, 2, 3, 4, 5].inject(:+)
 
+
+# You can transform a block into an object by declaring it as &block in the argument list:
+
+class ProcExample
+  def pass_in_block(&action)
+    @stored_proc = action
+  end
+  def execute(*parameters)
+    @stored_proc.call(*parameters)
+  end
+end
+
+proc = ProcExample.new
+proc.pass_in_block{ |a,b| a+b}
+puts "1+2 = #{proc.execute(1,2)}"
+
+# lambda syntax to assign a proc to a variable
+add = lambda {|a,b| a+b}
+add2 = -> a,b {a+b}
+mult = Proc.new {|a,b| a*b}
+p add.call(1,2)
+p add2.call(1,2)
+p mult.call(1,2)
