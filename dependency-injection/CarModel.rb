@@ -1,7 +1,5 @@
-require 'singleton'
 
 class CarModel
-  include Singleton
 
   def initialize
     @car_store ||= []
